@@ -1,0 +1,22 @@
+#!/bin/bash
+./5& > 5.in
+while true
+do
+	read line
+	echo "$line" >> 5.in
+
+	if [[ $line == "QUIT" ]]
+		then	
+			echo "the planned quit"
+			rm 5.in
+			exit 0
+	fi
+	
+	if [[ $line != "+" && $line != "*" && ! $line =~ [0-9]+ ]]
+		then
+			echo "ERROR"
+			rm 5.in
+			exit 1
+	fi	
+done
+
